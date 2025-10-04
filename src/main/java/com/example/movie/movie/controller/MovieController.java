@@ -12,32 +12,32 @@ import java.util.List;
 public class MovieController {
     public MovieService mvs;
 
-    public MovieController(MovieService mvs){
+    public MovieController(MovieService mvs) {
         this.mvs = mvs;
     }
 
     @GetMapping
-    public List<Movie> getAllMovie(){
+    public List<Movie> getAllMovie() {
         return mvs.getMovies();
     }
 
     @GetMapping("{id}")
-    public Movie getMovieId(@PathVariable Long id){
+    public Movie getMovieId(@PathVariable Long id) {
         return mvs.getMovie(id);
     }
 
     @PostMapping
-    public Movie postNewMovie(@RequestBody Movie movie){
+    public Movie postNewMovie(@RequestBody Movie movie) {
         return mvs.createMovie(movie);
     }
 
     @PutMapping("/id")
-    public Movie updateMovie(@RequestBody Movie movie,@PathVariable Long id){
-        return mvs.updateMovie(id,movie);
+    public Movie updateMovie(@RequestBody Movie movie, @PathVariable Long id) {
+        return mvs.updateMovie(id, movie);
     }
 
     @DeleteMapping("/id")
-    public void deleteMovie(@PathVariable Long id){
+    public void deleteMovie(@PathVariable Long id) {
         mvs.deleteMovie(id);
     }
 

@@ -12,24 +12,24 @@ public class MovieService {
 
     private MovieRepository movieRepository;
 
-    public MovieService(MovieRepository movieRepository){
+    public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
-    public List<Movie> getMovies(){
+    public List<Movie> getMovies() {
         return movieRepository.findAll();
     }
 
-    public Movie getMovie(Long id){
+    public Movie getMovie(Long id) {
         return movieRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Movie not found with id: " + id));
     }
 
-    public Movie createMovie(Movie movie){
+    public Movie createMovie(Movie movie) {
         return movieRepository.save(movie);
     }
 
-    public Movie updateMovie(Long id,Movie updateMovie){
+    public Movie updateMovie(Long id, Movie updateMovie) {
         Movie movie = movieRepository.findById(id)
                 .orElseThrow(() -> new MovieNotFoundException(""));
         movie.setTitle(updateMovie.getTitle());
@@ -39,11 +39,9 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
-    public void deleteMovie(Long id){
+    public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
     }
-
-
 
 
 }
